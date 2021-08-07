@@ -12,7 +12,7 @@ const initialState = {
   error: null
 }
 
-const postsSlice = createSlice({
+const planetsSlice = createSlice({
   name: 'planets',
   initialState,
   reducers: {
@@ -57,7 +57,7 @@ const postsSlice = createSlice({
 
 /*export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions*/
 
-export default postsSlice.reducer;
+export default planetsSlice.reducer;
 
 export const selectAllPlanets = state => state.planets.planets;
 

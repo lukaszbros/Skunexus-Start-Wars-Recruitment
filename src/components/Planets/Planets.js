@@ -1,20 +1,14 @@
 import './Planets.css';
 import Grid from '../Grid';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectAllPlanets, fetchPlanets } from './planetsReducer';
+import { useSelector } from 'react-redux';
+import { selectAllPlanets } from './planetsReducer';
+import { useHistory } from "react-router-dom";
 
 function Planets() {
 
-  const dispatch = useDispatch();
   const planets = useSelector(selectAllPlanets);
   const status = useSelector(state => state.planets.status);
-
-  useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchPlanets())
-    }
-  }, [status, dispatch]);
+  const history = useHistory();
 
   const data = {
     header: [
@@ -32,7 +26,7 @@ function Planets() {
     actions: [
       {
         label: 'Go to Films',
-        action: (row) => { console.log(`redirect to grid with ${row.films.length} Films`)}
+        action: (row) => { history.push("/films");}
       },
       {
         label: 'Go to Residents',

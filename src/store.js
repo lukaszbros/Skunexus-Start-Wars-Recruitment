@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import planetsReducer from './components/Planets/planetsReducer';
+import filmsReducer from './components/Films/filmsReducer';
+import planetsReducer  from './components/Planets/planetsReducer';
 
 export default configureStore({
   reducer: {
-    planets: planetsReducer
+    planets: planetsReducer, 
+    films: filmsReducer
   },
 })
