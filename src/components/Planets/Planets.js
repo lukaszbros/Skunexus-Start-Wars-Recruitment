@@ -26,13 +26,11 @@ function Planets() {
     actions: [
       {
         label: 'Go to Films',
-        action: (row) => {
-          history.push(`/films/${row.name}`);
-        }
+        action: (row) => {history.push(`/films/${row.name}`);}
       },
       {
         label: 'Go to Residents',
-        action: (row) => { console.log(`redirect to grid with ${row.residents.length} Residents`)}
+        action: (row) => { history.push(`/residents/${row.name}`);}
       }
     ]
   }

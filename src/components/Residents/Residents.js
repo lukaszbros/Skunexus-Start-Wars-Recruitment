@@ -1,0 +1,63 @@
+import './Residents.css';
+import Grid from '../Grid';
+import { useEffect, useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAllResidents, fetchResidents } from './residentsReducer';
+import { selectAllPlanets } from '../Planets/planetsReducer';
+import { useHistory } from "react-router-dom";
+
+function Residents({match}) {
+
+  const dispatch = useDispatch();
+  const residents = useSelector(selectAllResidents);
+  const status = useSelector(state => state.residents.status);
+  const history = useHistory();
+  const planets = useSelector(selectAllPlanets);
+  const planetResidents = useMemo(() => {
+    if (planets && planets.length > 0 && match.params.name) {
+      const planet = planets.find(planet => planet.name === match.params.name);
+      if (planet) {
+        return planet.residents;
+      }
+    }
+  }, [planets, match.params.name]);
+
+  useEffect(() => {
+    if (planetResidents) {
+      dispatch(fetchResidents(planetResidents));
+    }
+  }, [dispatch, planetResidents]);
+
+  
+
+
+  const data = {
+    header: [
+      'name',
+      'height',
+      'mass',
+      'hair_color',
+      'skin_color',
+      'eye_color',
+      'birth_year',
+      'gender',
+    ],
+    values: residents, 
+    actions: []
+  }
+
+  return (
+    <div className='Films'>
+    <h1>Star Wars Residents {match.params.name ? 'on ' + match.params.name : '' } </h1>
+    <button onClick={ () => history.push("/") }>Back to planets</button>
+    {status === 'loading' && 
+        <h1>loading...</h1>}
+      {status === 'error' && 
+        <h1>There was an error while fetching films data</h1>}
+    {status === 'succeeded' &&
+        <Grid data={data} />}
+    </div>
+  );
+}
+
+export default Residents;
