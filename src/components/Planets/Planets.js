@@ -26,7 +26,9 @@ function Planets() {
     actions: [
       {
         label: 'Go to Films',
-        action: (row) => { history.push("/films");}
+        action: (row) => {
+          history.push(`/films/${row.name}`);
+        }
       },
       {
         label: 'Go to Residents',

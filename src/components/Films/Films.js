@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllFilms, fetchFilms } from './filmsReducer';
 import { useHistory } from "react-router-dom";
 
-function Films() {
+function Films({match}) {
 
   const dispatch = useDispatch();
   const films = useSelector(selectAllFilms);
@@ -32,7 +32,7 @@ function Films() {
 
   return (
     <div className='Films'>
-    <h1>Star Wars Films</h1>
+    <h1>Star Wars Films on {match.params.name}</h1>
     <button onClick={ () => history.push("/") }>Back to planets</button>
     {status === 'loading' && 
         <h1>loading...</h1>}

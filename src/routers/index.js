@@ -22,7 +22,7 @@ const Router = () => {
       <BrowserRouter>
           <Switch>
               <Route exact path='/' component={Planets} />
-              <Route exact path='/films' component={Films} />
+              <Route exact path='/films/:name?' component={Films} />
               <Route component={NotFoundPage} />
           </Switch>
       </BrowserRouter>
