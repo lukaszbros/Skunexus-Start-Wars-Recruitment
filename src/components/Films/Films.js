@@ -1,8 +1,9 @@
 import './Films.css';
 import Grid from '../Grid';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllFilms, fetchFilms } from './filmsReducer';
+import { selectAllPlanets } from '../Planets/planetsReducer';
 import { useHistory } from "react-router-dom";
 
 function Films({match}) {
@@ -14,9 +15,20 @@ function Films({match}) {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchFilms())
+      dispatch(fetchFilms());
     }
   }, [status, dispatch]);
+
+  const planets = useSelector(selectAllPlanets);
+  const planetFilms = useMemo(() => {
+    if (planets && planets.length > 0 && match.params.name) {
+      const planet = planets.find(planet => planet.name === match.params.name);
+      if (planet) {
+        return planet.films;
+      }
+    }
+  }, [planets, match.params.name]);
+
 
   const data = {
     header: [
@@ -26,13 +38,13 @@ function Films({match}) {
       'producer',
       'release_date'
     ],
-    values: films, 
+    values: films.filter(film => planetFilms.includes(film.url)), 
     actions: []
   }
 
   return (
     <div className='Films'>
-    <h1>Star Wars Films on {match.params.name}</h1>
+    <h1>Star Wars Films {match.params.name ? 'on ' + match.params.name : '' } </h1>
     <button onClick={ () => history.push("/") }>Back to planets</button>
     {status === 'loading' && 
         <h1>loading...</h1>}
