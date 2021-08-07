@@ -8,13 +8,13 @@ function Planets() {
 
   const dispatch = useDispatch();
   const planets = useSelector(selectAllPlanets);
-  const postStatus = useSelector(state => state.planets.status);
+  const status = useSelector(state => state.planets.status);
 
   useEffect(() => {
-    if (postStatus === 'idle') {
+    if (status === 'idle') {
       dispatch(fetchPlanets())
     }
-  }, [postStatus, dispatch]);
+  }, [status, dispatch]);
 
   const data = {
     header: [
@@ -28,7 +28,7 @@ function Planets() {
       'surface_water',
       'population'
     ],
-    
+    values: planets,
     actions: [
       {
         label: 'Go to Films',
@@ -43,8 +43,12 @@ function Planets() {
 
   return (
     <div className='App'>
-      <h1>{postStatus}</h1>
-      <Grid data={data} />
+      {status === 'loading' && 
+        <h1>loading...</h1>}
+      {status === 'error' && 
+        <h1>There was an error while fetching planets data</h1>}
+      {status === 'succeeded' &&
+        <Grid data={data} />}
     </div>
   );
 }

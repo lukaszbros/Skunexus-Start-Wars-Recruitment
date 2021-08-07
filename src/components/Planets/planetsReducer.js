@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const fetchPlanets = createAsyncThunk('planets/fetchPlanets', async () => {
   const response = await axios.get('https://swapi.dev/api/planets/');
-  return response.planets;
+  return response.data.results;
 });
 
 const initialState = {
@@ -46,7 +46,6 @@ const postsSlice = createSlice({
     },
     [fetchPlanets.fulfilled]: (state, action) => {
       state.status = 'succeeded'
-      // Add any fetched posts to the array
       state.planets = state.planets.concat(action.payload)
     },
     [fetchPlanets.rejected]: (state, action) => {
