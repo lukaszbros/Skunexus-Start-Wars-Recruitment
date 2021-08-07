@@ -42,7 +42,8 @@ function Planets() {
   }
 
   return (
-    <div className='App'>
+    <div className='Planets'>
+    <h1>Star Wars Planets</h1>
       {status === 'loading' && 
         <h1>loading...</h1>}
       {status === 'error' && 
