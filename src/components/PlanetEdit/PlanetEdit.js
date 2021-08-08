@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import EditInput from "../utils/EditInput/EditInput";
 import { useDispatch } from 'react-redux';
 import { planetEdit } from '../Planets/planetsReducer';
+import { showAlert } from '../App/appReducer';
 
 const PlanetEdit = ({close, planet}) => {
   const {handleSubmit, control, formState: { errors } } = useForm({
@@ -18,6 +19,12 @@ const PlanetEdit = ({close, planet}) => {
 
   const onSubmit = (data) => {
     dispatch(planetEdit(data));
+    //try to save
+    if (Math.random() < 0.5) {
+      dispatch(showAlert({ text:'Planet saved', type: 'success' }));
+    } else {
+      dispatch(showAlert({ text:'Planet was not saved', type: 'danger' }));
+    }
     close();
   }
 

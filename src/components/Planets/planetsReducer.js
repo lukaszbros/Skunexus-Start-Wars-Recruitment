@@ -10,7 +10,8 @@ const initialState = {
   planets: [],
   editPlanet: null,
   status: 'idle',
-  error: null
+  error: null,
+  success: null,
 }
 
 const planetsSlice = createSlice({
@@ -20,9 +21,8 @@ const planetsSlice = createSlice({
     planetEdit: {
       reducer(state, action) {
         console.log(action.payload);
-        state.error = 'AAAAAAAA';
       }
-    }
+    },
   },
   extraReducers: {
     [fetchPlanets.pending]: (state, action) => {
