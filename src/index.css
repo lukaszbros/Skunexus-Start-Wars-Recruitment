@@ -15,3 +15,7 @@ code {
 .sr-only {
   display: none;
 }
+
+.main_container {
+  text-align: center;
+}

@@ -41,7 +41,7 @@ function Planets() {
   }
 
   return (
-    <div className='Planets'>
+    <div className='main_container'>
     <h1>Star Wars Planets</h1>
       {status === 'loading' && 
         <div>

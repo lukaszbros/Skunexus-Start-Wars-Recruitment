@@ -44,7 +44,7 @@ function Films({match}) {
   }
 
   return (
-    <div className='Films'>
+    <div className='main_container Planet'>
     <h1>Star Wars Films {match.params.name ? 'on ' + match.params.name : '' } </h1>
     <Button onClick={ () => history.push("/") } color="primary">Back to planets</Button>
     {status === 'loading' && 
