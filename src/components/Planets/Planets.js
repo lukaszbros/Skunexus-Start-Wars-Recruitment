@@ -4,12 +4,16 @@ import { useSelector } from 'react-redux';
 import { selectAllPlanets } from './planetsReducer';
 import { useHistory } from "react-router-dom";
 import { Spinner } from 'reactstrap';
+import { useState } from 'react';
+import PlanetEdit from './PlanetEdit';
 
 function Planets() {
 
   const planets = useSelector(selectAllPlanets);
   const status = useSelector(state => state.planets.status);
   const history = useHistory();
+  const [edit, setEdit] = useState(false);
+  const close = () => setEdit(false);
 
   const data = {
     header: [
@@ -36,6 +40,10 @@ function Planets() {
       {
         label: 'Details',
         action: (row) => { history.push(`/planet/${row.name}`);}
+      },
+      {
+        label: 'Edit',
+        action: (row) => { setEdit(true); }
       }
     ]
   }
@@ -51,6 +59,8 @@ function Planets() {
         <h1>There was an error while fetching planets data</h1>}
       {status === 'succeeded' &&
         <Grid data={data} />}
+      {edit && 
+        <PlanetEdit close={() => setEdit(false)}></PlanetEdit>}
     </div>
   );
 }

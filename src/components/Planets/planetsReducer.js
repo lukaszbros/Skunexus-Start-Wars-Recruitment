@@ -8,6 +8,7 @@ export const fetchPlanets = createAsyncThunk('planets/fetchPlanets', async () =>
 
 const initialState = {
   planets: [],
+  editPlanet: null,
   status: 'idle',
   error: null
 }
