@@ -4,6 +4,7 @@ import { clearAlert } from './appReducer';
 import { useSelector, useDispatch } from 'react-redux';
 import { Alert } from 'reactstrap';
 import { fetchPlanets } from '../Planets/planetsReducer';
+import PropTypes from 'prop-types';
 
 function App({children}) {
 
@@ -25,6 +26,10 @@ function App({children}) {
     </Alert>}
     <div>{children}</div>
   </div>);
+}
+
+App.propTypes = {
+  extended: PropTypes.node
 }
 
 export default App;

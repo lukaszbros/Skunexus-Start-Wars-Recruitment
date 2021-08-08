@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Spinner } from 'reactstrap';
 import { useState } from 'react';
 import PlanetEdit from '../PlanetEdit';
+import PropTypes from 'prop-types';
 
 function Planets({extended}) {
 
@@ -86,6 +87,10 @@ function Planets({extended}) {
         <PlanetEdit close={close} planet={editPlanet}></PlanetEdit>}
     </div>
   );
+}
+
+Planets.propTypes = {
+  extended: PropTypes.bool
 }
 
 export default Planets;

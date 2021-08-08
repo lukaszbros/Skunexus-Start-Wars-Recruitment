@@ -6,6 +6,7 @@ import { selectAllResidents, fetchResidents } from './residentsReducer';
 import { selectAllPlanets } from '../Planets/planetsReducer';
 import { useHistory } from "react-router-dom";
 import { Button, Spinner } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 function Residents({match}) {
 
@@ -28,9 +29,6 @@ function Residents({match}) {
       dispatch(fetchResidents(planetResidents));
     }
   }, [dispatch, planetResidents]);
-
-  
-
 
   const data = {
     header: [
@@ -71,6 +69,14 @@ function Residents({match}) {
           <Grid data={data} />}
     </div>
   );
+}
+
+Residents.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      name: PropTypes.string,
+    }).isRequired,
+  }).isRequired
 }
 
 export default Residents;

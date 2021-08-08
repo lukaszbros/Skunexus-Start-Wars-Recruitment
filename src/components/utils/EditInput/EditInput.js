@@ -5,6 +5,7 @@ import {
   InputGroupText, 
   Input } from 'reactstrap';
 import { Controller } from "react-hook-form";
+import PropTypes from 'prop-types';
 
 const EditInput = ({type, label, name, value, control, errors, children}) => {
 
@@ -24,6 +25,16 @@ const EditInput = ({type, label, name, value, control, errors, children}) => {
       {errors && <span className="form_error">This field is required</span>}
     </InputGroup>
   );
+}
+
+EditInput.propTypes = {
+  type: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  control: PropTypes.object.isRequired,
+  errors: PropTypes.object,
+  children: PropTypes.node
 }
 
 export default EditInput;

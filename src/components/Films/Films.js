@@ -6,6 +6,7 @@ import { selectAllFilms, fetchFilms } from './filmsReducer';
 import { selectAllPlanets } from '../Planets/planetsReducer';
 import { useHistory } from "react-router-dom";
 import { Button, Spinner } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 function Films({match}) {
 
@@ -57,6 +58,14 @@ function Films({match}) {
         <Grid data={data} />}
     </div>
   );
+}
+
+Films.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      name: PropTypes.string,
+    }).isRequired,
+  }).isRequired
 }
 
 export default Films;

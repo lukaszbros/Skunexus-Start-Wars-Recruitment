@@ -10,6 +10,7 @@ import EditInput from "../utils/EditInput/EditInput";
 import { useDispatch } from 'react-redux';
 import { planetEdit } from '../Planets/planetsReducer';
 import { showAlert } from '../App/appReducer';
+import PropTypes from 'prop-types';
 
 const PlanetEdit = ({close, planet}) => {
   const {handleSubmit, control, formState: { errors } } = useForm({
@@ -62,6 +63,20 @@ const PlanetEdit = ({close, planet}) => {
       </Modal>
     </div>
   );
+}
+
+PlanetEdit.propTypes = {
+  close: PropTypes.func,
+  planet: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    rotation_period:PropTypes.string.isRequired,
+    orbital_period: PropTypes.string.isRequired,
+    diameter: PropTypes.string.isRequired,
+    climate: PropTypes.string.isRequired,
+    gravity: PropTypes.string.isRequired,
+    terrain: PropTypes.string.isRequired,
+    surface_water: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default PlanetEdit;

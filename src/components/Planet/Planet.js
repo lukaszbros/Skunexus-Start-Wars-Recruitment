@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectAllPlanets } from '../Planets/planetsReducer';
 import { Button, ListGroup, ListGroupItem, Container, Row, Col } from 'reactstrap';
 import PlanetEdit from '../PlanetEdit';
+import PropTypes from 'prop-types';
 
 function Planet({match}) {
   const history = useHistory();
@@ -50,6 +51,14 @@ function Planet({match}) {
         <PlanetEdit close={() => setEdit(false)} planet={planet}></PlanetEdit>}
     </div>
   );
+}
+
+Planet.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      name: PropTypes.string,
+    }).isRequired,
+  }).isRequired
 }
 
 export default Planet;

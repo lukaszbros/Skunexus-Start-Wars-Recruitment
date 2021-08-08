@@ -1,5 +1,6 @@
 import './Grid.css';
 import { Button, List } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 function Grid({data: {header = [], types = [], values = [], actions = []}}) {
   return (
@@ -27,6 +28,19 @@ function Grid({data: {header = [], types = [], values = [], actions = []}}) {
       </tbody>
     </table>
   );
+}
+
+Grid.propTypes = {
+  data: PropTypes.shape({
+    header: PropTypes.arrayOf(PropTypes.string).isRequired,
+    types: PropTypes.arrayOf(PropTypes.string),
+    values: PropTypes.arrayOf(PropTypes.object),
+    actions: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      action: PropTypes.func.isRequired,
+      hide: PropTypes.func
+      }))
+  })
 }
 
 export default Grid;
