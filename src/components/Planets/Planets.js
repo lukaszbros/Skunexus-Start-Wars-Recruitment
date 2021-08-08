@@ -15,8 +15,8 @@ function Planets() {
   const [edit, setEdit] = useState(false);
   const [editPlanet, setEditPlanet] = useState();
   const close = () => {
-    setEditPlanet(undefined);
     setEdit(false);
+    setEditPlanet(undefined);
   }
 
   const data = {

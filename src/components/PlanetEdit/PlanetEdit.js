@@ -16,13 +16,18 @@ const PlanetEdit = ({close, planet}) => {
   });
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => dispatch(planetEdit(data));
+  const onSubmit = (data) => {
+    dispatch(planetEdit(data));
+    close();
+  }
 
   return (
     <div>
       <Modal isOpen={true} toggle={close}>
+      {planet &&
         <form onSubmit={handleSubmit(onSubmit)}>
         <ModalHeader>Edit {planet.name}</ModalHeader>
+        
         <ModalBody>
           <EditInput type="text" label="Name" name="name" value={planet.name} control={control} errors={errors.name}/>
           <br />
@@ -46,7 +51,7 @@ const PlanetEdit = ({close, planet}) => {
           <Button type="submit" color="primary">Save</Button>
           <Button color="secondary" onClick={close}>Cancel</Button>
         </ModalFooter>
-        </form>
+        </form>}
       </Modal>
     </div>
   );

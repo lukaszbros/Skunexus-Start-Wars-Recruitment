@@ -5,14 +5,19 @@ import Planets from '../components/Planets';
 import Planet from '../components/Planet';
 import Films from '../components/Films';
 import Residents from '../components/Residents';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchPlanets } from '../components/Planets/planetsReducer';
 import { useSelector, useDispatch } from 'react-redux';
+import { Alert } from 'reactstrap';
 
 const Router = () => {
 
   const dispatch = useDispatch();
   const status = useSelector(state => state.planets.status);
+
+  const [visible, setVisible] = useState(true);
+
+  const onDismiss = () => setVisible(false);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -21,6 +26,10 @@ const Router = () => {
   }, [status, dispatch]);
 
   return (
+    <div>
+    <Alert color="info" isOpen={visible} toggle={onDismiss}>
+      I am an alert and I can be dismissed!
+    </Alert>
       <BrowserRouter>
           <Switch>
               <Route exact path='/' component={Planets} />
@@ -30,6 +39,7 @@ const Router = () => {
               <Route component={NotFoundPage} />
           </Switch>
       </BrowserRouter>
+    </div>
   );
 };
 

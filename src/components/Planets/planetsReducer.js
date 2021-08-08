@@ -20,6 +20,7 @@ const planetsSlice = createSlice({
     planetEdit: {
       reducer(state, action) {
         console.log(action.payload);
+        state.error = 'AAAAAAAA';
       }
     }
   },
