@@ -17,29 +17,11 @@ const planetsSlice = createSlice({
   name: 'planets',
   initialState,
   reducers: {
-    /*postAdded: {
+    planetEdit: {
       reducer(state, action) {
-        state.posts.push(action.payload)
-      },
-      prepare(title, content, userId) {
-        // omit prepare logic
+        console.log(action.payload);
       }
-    },
-    reactionAdded(state, action) {
-      const { postId, reaction } = action.payload
-      const existingPost = state.posts.find(post => post.id === postId)
-      if (existingPost) {
-        existingPost.reactions[reaction]++
-      }
-    },
-    postUpdated(state, action) {
-      const { id, title, content } = action.payload
-      const existingPost = state.posts.find(post => post.id === id)
-      if (existingPost) {
-        existingPost.title = title
-        existingPost.content = content
-      }
-    }*/
+    }
   },
   extraReducers: {
     [fetchPlanets.pending]: (state, action) => {
@@ -56,7 +38,7 @@ const planetsSlice = createSlice({
   }
 })
 
-/*export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions*/
+export const { planetEdit } = planetsSlice.actions
 
 export default planetsSlice.reducer;
 

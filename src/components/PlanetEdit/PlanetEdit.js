@@ -7,12 +7,16 @@ import { Button,
   ModalFooter } from 'reactstrap';
 import { useForm } from "react-hook-form";
 import EditInput from "../utils/EditInput/EditInput";
+import { useDispatch } from 'react-redux';
+import { planetEdit } from '../Planets/planetsReducer';
 
 const PlanetEdit = ({close, planet}) => {
   const {handleSubmit, control, formState: { errors } } = useForm({
     mode: 'onBlur'
   });
-  const onSubmit = (data) => console.log(JSON.stringify(data));
+  const dispatch = useDispatch();
+
+  const onSubmit = (data) => dispatch(planetEdit(data));
 
   return (
     <div>
