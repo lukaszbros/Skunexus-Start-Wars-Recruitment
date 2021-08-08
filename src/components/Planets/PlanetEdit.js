@@ -7,11 +7,12 @@ import { Button,
   ModalFooter, 
   InputGroup,
   InputGroupAddon,
-  InputGroupText } from 'reactstrap';
-import { useForm } from "react-hook-form";
+  InputGroupText, 
+  Input } from 'reactstrap';
+import { useForm, Controller } from "react-hook-form";
 
 const PlanetEdit = ({close, planet}) => {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, control, formState: { errors } } = useForm({
     mode: 'onBlur'
   });
   const onSubmit = (data) => console.log(JSON.stringify(data));
@@ -26,7 +27,12 @@ const PlanetEdit = ({close, planet}) => {
             <InputGroupAddon addonType="prepend">
               <InputGroupText>Name</InputGroupText>
             </InputGroupAddon>
-            <input {...register("name", { required: true })} defaultValue={planet.name}/>
+            <Controller
+              name="name"
+              control={control}
+              defaultValue={planet.name}
+              rules={{ required: true }}
+              render={({ field }) => <Input {...field} />}/>
             {errors.name && <span className="form_error">This field is required</span>}
           </InputGroup>
           <br />
@@ -34,7 +40,12 @@ const PlanetEdit = ({close, planet}) => {
             <InputGroupAddon addonType="prepend">
               <InputGroupText>Rotation period</InputGroupText>
             </InputGroupAddon>
-            <input type="number" {...register("rotation_period", { required: true })} defaultValue={planet.rotation_period}/>
+            <Controller
+              name="rotation_period"
+              control={control}
+              defaultValue={planet.rotation_period}
+              rules={{ required: true }}
+              render={({ field }) => <Input type="number" {...field} />}/>
             {errors.rotation_period && <span className="form_error">This field is required</span>}
           </InputGroup>
           <br />
@@ -42,9 +53,14 @@ const PlanetEdit = ({close, planet}) => {
             <InputGroupAddon addonType="prepend">
               <InputGroupText>Terrain</InputGroupText>
             </InputGroupAddon>
-            <select {...register("terrain", { required: true })}>
-              {planet.terrain.split(',').map(terrain => <option key={terrain} value={terrain}>{terrain}</option>)}
-            </select>
+            <Controller
+              name="terrain"
+              control={control}
+              defaultValue={planet.terrain}
+              rules={{ required: true }}
+              render={({ field }) => <Input type="select" {...field}>
+              {planet.terrain.split(', ').map(terrain => <option key={terrain} value={terrain}>{terrain}</option>)}
+            </Input>}/>
             {errors.terrain && <span className="form_error">This field is required</span>}
           </InputGroup>
         </ModalBody>
