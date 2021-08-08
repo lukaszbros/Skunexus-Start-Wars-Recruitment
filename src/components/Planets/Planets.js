@@ -3,6 +3,7 @@ import Grid from '../Grid';
 import { useSelector } from 'react-redux';
 import { selectAllPlanets } from './planetsReducer';
 import { useHistory } from "react-router-dom";
+import { Spinner } from 'reactstrap';
 
 function Planets() {
 
@@ -43,7 +44,9 @@ function Planets() {
     <div className='Planets'>
     <h1>Star Wars Planets</h1>
       {status === 'loading' && 
-        <h1>loading...</h1>}
+        <div>
+          <Spinner color="dark" ></Spinner>
+        </div>}
       {status === 'error' && 
         <h1>There was an error while fetching planets data</h1>}
       {status === 'succeeded' &&

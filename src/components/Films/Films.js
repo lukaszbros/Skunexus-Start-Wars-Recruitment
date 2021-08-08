@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllFilms, fetchFilms } from './filmsReducer';
 import { selectAllPlanets } from '../Planets/planetsReducer';
 import { useHistory } from "react-router-dom";
+import { Button, Spinner } from 'reactstrap';
 
 function Films({match}) {
 
@@ -45,9 +46,11 @@ function Films({match}) {
   return (
     <div className='Films'>
     <h1>Star Wars Films {match.params.name ? 'on ' + match.params.name : '' } </h1>
-    <button onClick={ () => history.push("/") }>Back to planets</button>
+    <Button onClick={ () => history.push("/") } color="primary">Back to planets</Button>
     {status === 'loading' && 
-        <h1>loading...</h1>}
+        <div>
+          <Spinner color="dark" ></Spinner>
+        </div>}
       {status === 'error' && 
         <h1>There was an error while fetching films data</h1>}
     {status === 'succeeded' &&

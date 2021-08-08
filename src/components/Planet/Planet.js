@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllPlanets } from '../Planets/planetsReducer';
+import { Button } from 'reactstrap';
 
 function Planet({match}) {
   const history = useHistory();
@@ -18,7 +19,7 @@ function Planet({match}) {
 
   return (
     <div className='Planets'>
-      <button onClick={ () => history.push("/") }>Back to planets</button>
+      <Button onClick={ () => history.push("/") } color="primary">Back to planets</Button>
     </div>
   );
 }

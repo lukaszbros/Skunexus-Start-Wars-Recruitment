@@ -1,4 +1,5 @@
 import './Grid.css';
+import { Button, List } from 'reactstrap';
 
 function Grid({data: {header = [], values = [], actions = []}}) {
   return (
@@ -15,7 +16,9 @@ function Grid({data: {header = [], values = [], actions = []}}) {
             {header.map((colName) => <td key={colName}>{row[colName]}</td>)}
             {!!actions.length && 
               <td className='gridActions'>
-                {actions.map(({label, action}) => <button key={label} onClick={() => action(row)}>{label}</button>)}
+                <List type="unstyled">
+                {actions.map(({label, action}) => <li><Button key={label} onClick={() => action(row)} color="primary">{label}</Button></li>)}
+                </List>
               </td>
             }
           </tr>
