@@ -33,8 +33,5 @@ const residentsSlice = createSlice({
 
 export default residentsSlice.reducer;
 
-export const selectAllResidents = state => {
-  console.log(state.residents);
-  return state.residents.residents;
-}
+export const selectAllResidents = state => state.residents.residents;
 

@@ -18,12 +18,12 @@ function Planet({match}) {
   }, [planets, match.params.name]);
 
   return (
-    <div class="main_container">
+    <div className="main_container">
       <h1>Details of {match.params.name}</h1>
       <Button onClick={ () => history.push("/") } color="primary">Back to planets</Button>
       {planet &&
       <Container>
-      <Row>
+        <Row>
         <Col>
           <ListGroup>
             <ListGroupItem><b>name:</b> {planet.name}</ListGroupItem>

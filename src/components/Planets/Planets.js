@@ -13,7 +13,11 @@ function Planets() {
   const status = useSelector(state => state.planets.status);
   const history = useHistory();
   const [edit, setEdit] = useState(false);
-  const close = () => setEdit(false);
+  const [editPlanet, setEditPlanet] = useState();
+  const close = () => {
+    setEditPlanet(undefined);
+    setEdit(false);
+  }
 
   const data = {
     header: [
@@ -43,7 +47,7 @@ function Planets() {
       },
       {
         label: 'Edit',
-        action: (row) => { setEdit(true); }
+        action: (row) => { setEditPlanet(row); setEdit(true); }
       }
     ]
   }
@@ -60,7 +64,7 @@ function Planets() {
       {status === 'succeeded' &&
         <Grid data={data} />}
       {edit && 
-        <PlanetEdit close={() => setEdit(false)}></PlanetEdit>}
+        <PlanetEdit close={close} planet={editPlanet}></PlanetEdit>}
     </div>
   );
 }
