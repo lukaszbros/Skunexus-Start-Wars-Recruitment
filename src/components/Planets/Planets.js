@@ -35,19 +35,24 @@ function Planets() {
     actions: [
       {
         label: 'Go to Films',
-        action: (row) => {history.push(`/films/${row.name}`);}
+        action: (row) => history.push(`/films/${row.name}`),
+        hide: (row) => row.films.length === 0
       },
       {
         label: 'Go to Residents',
-        action: (row) => { history.push(`/residents/${row.name}`);}
+        action: (row) => history.push(`/residents/${row.name}`),
+        hide: (row) => row.residents.length === 0 
       },
       {
         label: 'Details',
-        action: (row) => { history.push(`/planet/${row.name}`);}
+        action: (row) => history.push(`/planet/${row.name}`)
       },
       {
         label: 'Edit',
-        action: (row) => { setEditPlanet(row); setEdit(true); }
+        action: (row) => {
+          setEditPlanet(row); 
+          setEdit(true);
+        }
       }
     ]
   }

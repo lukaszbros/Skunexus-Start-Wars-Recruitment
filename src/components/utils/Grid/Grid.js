@@ -17,7 +17,8 @@ function Grid({data: {header = [], values = [], actions = []}}) {
             {!!actions.length && 
               <td className='gridActions'>
                 <List type="unstyled">
-                {actions.map(({label, action}) => <li key={label}><Button onClick={() => action(row)} color="primary">{label}</Button></li>)}
+                {actions.map(({label, action, hide}) => 
+                  hide && hide(row) ? (null) : (<li key={label}><Button onClick={() => action(row)} color="primary">{label}</Button></li>))}
                 </List>
               </td>
             }
