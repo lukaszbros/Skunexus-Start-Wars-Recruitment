@@ -7,7 +7,7 @@ import { Spinner } from 'reactstrap';
 import { useState } from 'react';
 import PlanetEdit from '../PlanetEdit';
 
-function Planets() {
+function Planets({extended}) {
 
   const planets = useSelector(selectAllPlanets);
   const status = useSelector(state => state.planets.status);
@@ -29,7 +29,8 @@ function Planets() {
       'gravity',
       'terrain',
       'surface_water',
-      'population'
+      'population',
+      ...extended ? ['films', 'residents'] : [],
     ],
     types: [
       'text',
@@ -39,8 +40,9 @@ function Planets() {
       'text',
       'text',
       'list',
-      'number',
-      'number'
+      'text',
+      'text',
+      ...extended ? ['count', 'count'] : [],
     ],
     values: planets,
     actions: [
@@ -66,7 +68,8 @@ function Planets() {
         }
       }
     ]
-  }
+  };
+
 
   return (
     <div className='main_container'>

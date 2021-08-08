@@ -13,7 +13,7 @@ function Grid({data: {header = [], types = [], values = [], actions = []}}) {
       <tbody>
         {values.map((row, index) => (
           <tr key={index}>
-            {header.map((colName, colIndex) => <td key={colName} className={types[colIndex]} >{row[colName]}</td>)}
+            {header.map((colName, colIndex) => <td key={colName} className={types[colIndex]} >{types[colIndex] === 'count' ? row[colName].length : row[colName]}</td>)}
             {!!actions.length && 
               <td className='gridActions'>
                 <List type="unstyled">

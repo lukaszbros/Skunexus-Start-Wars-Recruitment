@@ -13,7 +13,9 @@ const Router = () => {
     <App>
       <BrowserRouter>
           <Switch>
-              <Route exact path='/' component={Planets} />
+              <Route exact path='/' render={(props) => (
+                <Planets {...props} extended={true} />
+              )} />
               <Route exact path='/planet/:name' component={Planet} />
               <Route exact path='/films/:name?' component={Films} />
               <Route exact path='/residents/:name' component={Residents} />
