@@ -31,6 +31,17 @@ function Planets() {
       'surface_water',
       'population'
     ],
+    types: [
+      'text',
+      'number',
+      'number',
+      'number',
+      'text',
+      'text',
+      'list',
+      'number',
+      'number'
+    ],
     values: planets,
     actions: [
       {

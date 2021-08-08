@@ -28,3 +28,7 @@
 .gridActions button {
   margin: 5px 5px;
 }
+
+.number {
+  text-align: right;
+}

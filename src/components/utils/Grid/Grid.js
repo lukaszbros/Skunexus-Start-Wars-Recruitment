@@ -1,7 +1,7 @@
 import './Grid.css';
 import { Button, List } from 'reactstrap';
 
-function Grid({data: {header = [], values = [], actions = []}}) {
+function Grid({data: {header = [], types = [], values = [], actions = []}}) {
   return (
     <table className='gridTable'>
       <thead>
@@ -13,7 +13,7 @@ function Grid({data: {header = [], values = [], actions = []}}) {
       <tbody>
         {values.map((row, index) => (
           <tr key={index}>
-            {header.map((colName) => <td key={colName}>{row[colName]}</td>)}
+            {header.map((colName, colIndex) => <td key={colName} className={types[colIndex]} >{row[colName]}</td>)}
             {!!actions.length && 
               <td className='gridActions'>
                 <List type="unstyled">
