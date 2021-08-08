@@ -37,8 +37,10 @@ function Planet({match}) {
             <ListGroupItem><b>terrain:</b> {planet.terrain}</ListGroupItem>
             <ListGroupItem><b>surface water:</b> {planet.surface_water}</ListGroupItem>
             <ListGroupItem><b>population:</b> {planet.population}</ListGroupItem>
-            <ListGroupItem><Button onClick={ () => history.push(`/films/${planet.name}`) } color="primary">Go to Films</Button></ListGroupItem>
-            <ListGroupItem><Button onClick={ () => history.push(`/residents/${planet.name}`) } color="primary">Go to Residents</Button></ListGroupItem>
+            {planet.films.length > 0 &&
+              <ListGroupItem><Button onClick={ () => history.push(`/films/${planet.name}`) } color="primary">Go to Films</Button></ListGroupItem>}
+            {planet.residents.length > 0 &&
+              <ListGroupItem><Button onClick={ () => history.push(`/residents/${planet.name}`) } color="primary">Go to Residents</Button></ListGroupItem>}
             <ListGroupItem><Button onClick={ () => setEdit(true) } color="primary">Edit</Button></ListGroupItem>
           </ListGroup>
         </Col>
