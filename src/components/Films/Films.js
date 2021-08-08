@@ -1,5 +1,5 @@
 import './Films.css';
-import Grid from '../Grid';
+import Grid from '../utils/Grid';
 import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllFilms, fetchFilms } from './filmsReducer';

@@ -1,5 +1,5 @@
 import './Planets.css';
-import Grid from '../Grid';
+import Grid from '../utils/Grid';
 import { useSelector } from 'react-redux';
 import { selectAllPlanets } from './planetsReducer';
 import { useHistory } from "react-router-dom";

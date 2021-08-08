@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import NotFoundPage from '../components/NotFoundPage';
+import NotFoundPage from '../components/utils/NotFoundPage';
 import Planets from '../components/Planets';
 import Planet from '../components/Planet';
 import Films from '../components/Films';

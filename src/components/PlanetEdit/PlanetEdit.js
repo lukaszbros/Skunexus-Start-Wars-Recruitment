@@ -6,7 +6,7 @@ import { Button,
   ModalBody, 
   ModalFooter } from 'reactstrap';
 import { useForm } from "react-hook-form";
-import EditInput from "./EditInput";
+import EditInput from "../utils/EditInput/EditInput";
 
 const PlanetEdit = ({close, planet}) => {
   const {handleSubmit, control, formState: { errors } } = useForm({

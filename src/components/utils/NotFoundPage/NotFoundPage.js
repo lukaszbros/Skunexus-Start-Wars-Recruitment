@@ -1,4 +1,4 @@
-import Bg from '../../assets/space.jpg';
+import Bg from '../../../assets/space.jpg';
 import './NotFoundPage.css';
 
 
