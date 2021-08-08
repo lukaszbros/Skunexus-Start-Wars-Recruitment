@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NotFoundPage from '../components/NotFoundPage';
 import Planets from '../components/Planets';
+import Planet from '../components/Planet';
 import Films from '../components/Films';
 import Residents from '../components/Residents';
 import { useEffect } from 'react';
@@ -23,6 +24,7 @@ const Router = () => {
       <BrowserRouter>
           <Switch>
               <Route exact path='/' component={Planets} />
+              <Route exact path='/planet/:name' component={Planet} />
               <Route exact path='/films/:name?' component={Films} />
               <Route exact path='/residents/:name' component={Residents} />
               <Route component={NotFoundPage} />

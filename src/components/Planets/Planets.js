@@ -31,6 +31,10 @@ function Planets() {
       {
         label: 'Go to Residents',
         action: (row) => { history.push(`/residents/${row.name}`);}
+      },
+      {
+        label: 'Details',
+        action: (row) => { history.push(`/planet/${row.name}`);}
       }
     ]
   }
