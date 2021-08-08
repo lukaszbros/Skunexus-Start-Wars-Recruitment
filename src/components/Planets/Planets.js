@@ -5,7 +5,7 @@ import { selectAllPlanets } from './planetsReducer';
 import { useHistory } from "react-router-dom";
 import { Spinner } from 'reactstrap';
 import { useState } from 'react';
-import PlanetEdit from './PlanetEdit';
+import PlanetEdit from '../PlanetEdit';
 
 function Planets() {
 
