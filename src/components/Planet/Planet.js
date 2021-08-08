@@ -1,9 +1,10 @@
 import './Planet.css';
 import { useHistory } from "react-router-dom";
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllPlanets } from '../Planets/planetsReducer';
 import { Button, ListGroup, ListGroupItem, Container, Row, Col } from 'reactstrap';
+import PlanetEdit from '../PlanetEdit';
 
 function Planet({match}) {
   const history = useHistory();
@@ -16,6 +17,7 @@ function Planet({match}) {
       }
     }
   }, [planets, match.params.name]);
+  const [edit, setEdit] = useState(false);
 
   return (
     <div className="main_container">
@@ -37,10 +39,13 @@ function Planet({match}) {
             <ListGroupItem><b>population:</b> {planet.population}</ListGroupItem>
             <ListGroupItem><Button onClick={ () => history.push(`/films/${planet.name}`) } color="primary">Go to Films</Button></ListGroupItem>
             <ListGroupItem><Button onClick={ () => history.push(`/residents/${planet.name}`) } color="primary">Go to Residents</Button></ListGroupItem>
+            <ListGroupItem><Button onClick={ () => setEdit(true) } color="primary">Edit</Button></ListGroupItem>
           </ListGroup>
         </Col>
         </Row>
       </Container>}
+      {edit && 
+        <PlanetEdit close={() => setEdit(false)} planet={planet}></PlanetEdit>}
     </div>
   );
 }
