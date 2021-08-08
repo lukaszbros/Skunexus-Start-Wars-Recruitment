@@ -43,6 +43,16 @@ function Residents({match}) {
       'birth_year',
       'gender',
     ],
+    types: [
+      'text',
+      'number',
+      'number',
+      'text',
+      'text',
+      'text',
+      'number',
+      'text'
+    ],
     values: residents, 
     actions: []
   }
